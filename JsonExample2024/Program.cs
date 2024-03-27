@@ -6,6 +6,7 @@ namespace JsonExample2024
 {
     internal class Program
     {
+        MonkeyList monkeyLIst = new MonkeyList();
         public static string BasicSerializtionExmaple(Student student)
         {
             string json = JsonSerializer.Serialize(student);
@@ -86,6 +87,21 @@ Final Grade:{sub.FinalGrade}");
 {nameof(sub.Name)}:{sub.Name}
 Final Grade:{sub.FinalGrade}");
             }
+        }
+
+        public static string SerializeMonkey(Monkey monkey)
+        {
+            string json = JsonSerializer.Serialize(monkey);
+            return json;
+        }
+        public static void DeserializeMonkey(string json)
+        {
+            Monkey monkey = JsonSerializer.Deserialize<Monkey>(json);
+        }
+        public static void AddMonkey(Monkey monkey)
+        {
+             DeserializeMonkey(SerializeMonkey(monkey));
+
         }
         static void Main(string[] args)
         {
